@@ -40,6 +40,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndpointStrings.cs" />
     <Compile Include="NoteManager.cs" />
     <Compile Include="Result.cs" />
   </ItemGroup>

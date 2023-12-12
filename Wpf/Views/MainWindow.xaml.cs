@@ -20,10 +20,17 @@ namespace Wpf.Views
         public MainWindow()
         {
             InitializeComponent();
+            InitializeViewModelAsync();
         }
         private void SayHelloClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Hello {AuthorBox.Text}! ");
+        }
+        private async void InitializeViewModelAsync()
+        {
+            var viewModel = new MainWindowViewModel();
+            await viewModel.InitializeAsync();
+            DataContext = viewModel;
         }
     }
 }

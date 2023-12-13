@@ -86,6 +86,7 @@ namespace Wpf.ViewModels
             if (SelectedItem != null)
             {
                 AvailableItems.Remove(SelectedItem);
+                //Remove from database
             }
             else MessageBox.Show("No selected note");
         }

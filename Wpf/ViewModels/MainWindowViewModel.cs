@@ -81,17 +81,24 @@ namespace Wpf.ViewModels
             else MessageBox.Show("No selected note");
         }
         public ICommand DeleteSelectedItemCommand => new RelayCommand(DeleteSelectedItem);
-        private void DeleteSelectedItem(object param)
+        private async void DeleteSelectedItem(object param)
         {
             if (SelectedItem != null)
             {
-                AvailableItems.Remove(SelectedItem);
-                //Remove from database
+                var result = await Manager.DeleteNote(SelectedItem.Id);
+                if (result.Flag == SolveFlag.OK)
+                {
+                    AvailableItems.Remove(SelectedItem);
+                }
+                else
+                {
+                    MessageBox.Show("Couldn't remove note.");
+                }
             }
             else MessageBox.Show("No selected note");
         }
         public ICommand AddNoteCommand => new RelayCommand(AddNote);
-        private void AddNote(object param)
+        private async void AddNote(object param)
         {
             if (NoteItem.Title == null || NoteItem.Title == "") MessageBox.Show("Title is required");
             else
@@ -100,6 +107,7 @@ namespace Wpf.ViewModels
                 NoteItem.TagList = new List<Tag>();
                 NoteItem.Id = 1;
                 AvailableItems.Add(NoteItem);
+                var result = await Manager.PostNote(NoteItem);
                 NoteItem = new NoteItem();
             }
         }

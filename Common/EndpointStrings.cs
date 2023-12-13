@@ -10,5 +10,6 @@ namespace Common
     {
         public static readonly string PostCommitEndpoint = "api/Notes/AddNote";
         public static readonly string GetCommitsEndpoint = "api/Notes/ListNotes";
+        public static readonly string DeleteCommitsEndpoint = "api/Notes/DeleteNote";
     }
 }

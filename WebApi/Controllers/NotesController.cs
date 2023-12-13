@@ -48,5 +48,19 @@ namespace WebApi.Controllers
 
             return new OkObjectResult(newNote);
         }
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteNote(int Id)
+        {
+            var note = await dbContext.Notes.FindAsync(Id);
+            if (note == null)
+            {
+                return NotFound();
+            }
+
+            dbContext.Notes.Remove(note);
+            await dbContext.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

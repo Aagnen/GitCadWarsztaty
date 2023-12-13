@@ -53,7 +53,22 @@ namespace Common
             {
                 return new Result<List<NoteItem>>(SolveFlag.Error, null, ex.Message);
             }
-
+        }
+        public async Task<Result> DeleteNote(int id)
+        {
+            try
+            {
+                var response = await Client.DeleteAsync($"{EndpointStrings.DeleteCommitsEndpoint}/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    return new Result(SolveFlag.OK, "");
+                }
+                return new Result(SolveFlag.Error, $"[Code {response.StatusCode}]: {response.ReasonPhrase}");
+            }
+            catch (Exception ex)
+            {
+                return new Result(SolveFlag.Error, $"{ex.Message}");
+            }
         }
     }
 }

@@ -25,14 +25,14 @@ namespace Wpf.ViewModels
 
         #region Bindings
         public ObservableCollection<NoteItem> AvailableItems { get; set; }
-        public NoteManager Manager 
-        { 
+        public NoteManager Manager
+        {
             get => _manager;
-            set 
+            set
             {
                 _manager = value;
-                OnPropertyChanged(); 
-            } 
+                OnPropertyChanged();
+            }
         }
         public NoteItem NoteItem 
         {
@@ -60,13 +60,12 @@ namespace Wpf.ViewModels
         {
             NoteItem = new NoteItem();
             AvailableItems = new ObservableCollection<NoteItem>();
-            //populate it
 
         }
         public async Task InitializeAsync()
         {
             var result = await Manager.GetNotes();
-            // Now populate AvailableItems
+            //Now populate AvailableItems
             if (result.Flag == SolveFlag.OK)
                 foreach (var item in result.Value)
                     AvailableItems.Add(item);

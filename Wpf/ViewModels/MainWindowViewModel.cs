@@ -19,7 +19,7 @@ namespace Wpf.ViewModels
         #region State
         private NoteItem? _selectedItem;
         private NoteItem? _noteItem;
-        private NoteManager _manager = new NoteManager("baseAdress"); //to do base adress
+        private NoteManager _manager = new NoteManager("https://localhost:7184/"); //to do base adress
         #endregion
 
 

@@ -8,7 +8,7 @@ namespace Common
 {
     public static class EndpointStrings
     {
-        public static readonly string PostCommitEndpoint = "https://localhost:7184/api/Notes/AddNote";
-        public static readonly string GetCommitsEndpoint = "https://localhost:7184/api/Notes/ListNotes";
+        public static readonly string PostCommitEndpoint = "api/Notes/AddNote";
+        public static readonly string GetCommitsEndpoint = "api/Notes/ListNotes";
     }
 }
